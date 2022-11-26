@@ -3,6 +3,9 @@ from factor_analyzer import FactorAnalyzer
 
 import numpy
 
+from factor_analyzer.factor_analyzer import calculate_bartlett_sphericity
+
+
 dataset = pandas.read_csv("bfi_data.csv")
 
 print(dataset)
@@ -10,6 +13,9 @@ print(dataset)
 dataset.dropna(inplace=True)
 
 print(dataset)
+
+chi2 ,p=calculate_bartlett_sphericity(dataset)
+print(chi2, p)
 
 
 machine = FactorAnalyzer(n_factors=25, rotation=None)
